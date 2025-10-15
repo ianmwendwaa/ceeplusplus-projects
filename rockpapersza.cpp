@@ -1,8 +1,10 @@
 //
 // Created by Owner on 10/15/2025.
 //
+//
+// Created by Owner on 10/15/2025.
+//
 #include <iostream>
-#include <map>
 #include <string>
 #include <random>
 
@@ -25,28 +27,38 @@ std::string generateRandomItem() {
     return randItem;
 }
 
-bool hasWon(const char* option) {
+bool hasWon(const std::string& option) {
 
-    static std::map<std::string, std::string> winCriteria = {"",""};
+    // static std::map<std::string, std::string> winCriteria = {{"",""},{"",""}};
 
     if (option == generateRandomItem()) {
         generateRandomItem();
-    }else {
     }
-    return true;
+
+    if (option == "Rock" && generateRandomItem() == "Scissors") {
+        std::cout << "You have won!";
+        return true;
+    }
+
+    if (option == "Paper" && generateRandomItem() == "Rock") {
+        std::cout<<"You have won!";
+        return true;
+    }
+    if (option == "Scissors" && generateRandomItem() == "Paper") {
+        std::cout << "You have won!";
+        return true;
+    }
+    std::cerr << "You lost!";
+    return false;
 }
 
 int main() {
-    hasWon("");
+    std::cout << "Welcome to my Rock, paper, scissors program"<< std::endl;
+    std::cout << "Choose any to proceed: ";
+    std::string user_item;//variable to store the user's choice
+
+    std::cin >> user_item;
+    hasWon(user_item);
+
+    return 0;
 }
-
-
-// switch (option) {
-//     case "Rock":
-//         return true;
-//     case "Paper":
-//         return true;
-//     case "Scissors":
-//         return true;
-//     default: ;
-// }
