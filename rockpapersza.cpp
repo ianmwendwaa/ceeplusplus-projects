@@ -31,6 +31,7 @@ bool hasWon(const std::string& option) {
 
     // static std::map<std::string, std::string> winCriteria = {{"",""},{"",""}};
 
+    // generate a new item if user's option matches the generated one
     if (option == generateRandomItem()) {
         generateRandomItem();
     }
